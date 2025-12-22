@@ -75,12 +75,23 @@ Both services will automatically deploy when you push to your connected GitHub b
 
 ### Issue: "Railpack could not determine how to build the app"
 **Solution:** Make sure:
-- Docker is enabled in service settings
-- Root directory is set correctly (`backend` or `frontend`)
-- Dockerfile exists in the root directory
+- Docker is enabled in service settings (**Settings** → **Docker** → Enable "Use Dockerfile")
+- **Root Directory** is set correctly in **Settings** → **Source** (`backend` or `frontend`)
+- Dockerfile exists in the root directory you specified
+- `railway.json` file exists in the `backend/` or `frontend/` directory (already created)
 
 ### Issue: "Script start.sh not found"
 **Solution:** This is normal - Railway will use the Dockerfile CMD instead. Make sure Docker is enabled.
+
+### Issue: "Dockerfile 'Dockerfile' does not exist"
+**Solution:** 
+1. **CRITICAL:** Set the **Root Directory** in Railway dashboard:
+   - Go to your service → **Settings** → **Source**
+   - Set **Root Directory** to either `backend` or `frontend` (depending on which service)
+   - This tells Railway where to look for the Dockerfile
+2. Make sure Docker is enabled in **Settings** → **Docker**
+3. The Dockerfile path should be `Dockerfile` (relative to the root directory you set)
+4. Service-specific `railway.json` files are already in `backend/` and `frontend/` directories
 
 ### Issue: Build fails
 **Solution:**
