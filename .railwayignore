@@ -1,0 +1,59 @@
+# Railway ignore file - exclude unnecessary files from deployment
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Testing
+htmlcov/
+.coverage
+.coverage.*
+.pytest_cache/
+*.cover
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+*.md
+!README.md
+
+# Docker
+docker-compose.yml
+.dockerignore
+
+# Scripts
+*.sh
+!start.sh
+
+# Environment files (Railway uses its own env vars)
+.env
+.env.local
+.env.*.local
+

@@ -1,6 +1,0 @@
-# Railway configuration
-# This forces Railway to use Docker
-
-[build]
-builder = "DOCKERFILE"
-
