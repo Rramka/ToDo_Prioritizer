@@ -25,7 +25,7 @@ FROM node:18-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production \
-    PORT=3000 \
+    PORT=${PORT:-3000} \
     NEXT_TELEMETRY_DISABLED=1
 
 # Create non-root user
