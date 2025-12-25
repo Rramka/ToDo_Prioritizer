@@ -14,7 +14,9 @@ RUN npm ci
 
 # Copy source code
 COPY src ./src
-COPY public ./public 2>/dev/null || mkdir -p public
+# Create public directory and copy if it exists
+RUN mkdir -p ./public
+COPY public ./public
 
 # Build the application
 RUN npm run build
@@ -46,5 +48,6 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD node -e "require('http').get('http://localhost:' + (process.env.PORT || 3000), (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})" || exit 1
 
 # Use PORT from environment variable (Railway provides this)
-CMD node server.js
+# Next.js standalone mode automatically reads PORT env var
+CMD ["node", "server.js"]
 
